@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  static-proxy:
+    ports:
+      - '80:80'
+    image: nginx
+    restart: 'unless-stopped'
+    volumes:
+      - source: ./static
+        target: /www/data
+        type: bind
+      - source: ./nginx-static.conf
+        target: /etc/nginx/nginx.conf
+        type: bind
